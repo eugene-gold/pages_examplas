@@ -1,0 +1,76 @@
+query User($userId: ID!) {
+    user(id: $userId) {
+        roleBindings {
+            edges {
+                node {
+                    id
+                }
+            }
+        }
+    }
+}
+
+
+mutation UserUpdate($input: UserUpdateInput!) {
+    userUpdate(input: $input) {
+        user {
+            phone
+            middleName
+            lastName
+            id
+            email
+            firstName
+        }
+    }
+}
+
+mutation UserCreate($input: UserCreateInput!) {
+    userCreate(input: $input) {
+        user {
+            lastName
+            middleName
+            firstName
+            email
+            id
+            phone
+            roleBindings {
+                edges {
+                    node {
+                        id
+                        role {
+                            id
+                            description
+                            slug
+                            title
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+mutation UserBindRole($input: UserBindRoleInput!) {
+    userBindRole(input: $input) {
+        roleBinding {
+            id
+            role {
+                title
+                id
+                slug
+            }
+        }
+    }
+}
+
+mutation UserUnbindRole($input: UserUnbindRoleInput!) {
+    userUnbindRole(input: $input) {
+        deletedRoleBindingId
+    }
+}
+
+mutation UserDelete($input: UserDeleteInput!) {
+    userDelete(input: $input) {
+        deletedUserId
+    }
+}

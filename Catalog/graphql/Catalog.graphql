@@ -1,0 +1,38 @@
+query CatalogCategories($query: String)  {
+  equipmentClasses(query: $query) {
+    edges {
+      node {
+        title
+        id
+        photos
+        comment
+        slug
+        defaultModelImage
+        models {
+          edges {
+            node {
+              height
+              id
+              length
+              title
+              width
+              weight
+              comment
+              slug
+              photos
+              manufacturer {
+                comment
+                id
+                title
+                country
+              }
+              equipmentClass {
+                defaultModelImage
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
